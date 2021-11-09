@@ -1,0 +1,45 @@
+{% extends 'app_admin/base.html'%}
+{% block title %}Dashbord{% endblock %}
+{% block style %}
+<style>
+    body{
+            background-color:rgb(229, 227, 227)
+        }
+</style>
+{% endblock %}
+{% block dashbord %}
+{% load static %}
+    <h1 class="text-center mt-3">Tableau de bord</h1>
+<div class="container">
+    <div class="card-header bg-info text-white">
+        Statistiques
+    </div>
+        <div class="card-body bg-white">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <a class="text-decoration-none text-dark" href="{% url 'toutes-les-cooeperatives' %}">
+                    <div class="card my-card shadow text-center p-3">
+                        <h4>Cooeperative</h4>
+                        <h3>{{total_cooep}}</h3>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <a class="text-decoration-none text-dark" href="{% url 'toutes-les-femmes' %}">
+                    <div class="card my-card shadow text-center p-3">
+                        <h4>Femmes</h4>
+                        <h3>{{total_fem}}</h3>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <a class="text-decoration-none text-dark" href=""></a>
+                    <div class="card my-card shadow text-center p-3">
+                        <h4>Utilisateur</h4>
+                        <h3>1</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

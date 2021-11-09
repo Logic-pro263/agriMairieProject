@@ -1,0 +1,104 @@
+{% extends 'mairie/base.html' %}
+{% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+         <!--Causes Start-->
+         <section class="wf100 p80">
+            <div class="container">
+               <div class="row">
+                  <div class="col-lg-12">
+                     <div class="myaccount-form">
+                        <h3>Enregitrez-vous</h3>
+                         {% for message in messages %}
+                         {% if message %}
+                        <div class="alert alert-success alert-{{massage.tags}}r">{{message}}</div>
+                        {% endif %}
+                        {% endfor %}
+                        <form method="POST" action="">
+                           {% csrf_token %}
+                           <ul class="row">
+                              <li class="col-md-6">
+                                 <label> Nom : </label>
+                                 {% if form.first_name.errors %}
+                           {% for error in form.first_name.errors %}
+                           <div class="div-error-{{form.pwd.name}}"><small class="text-danger">{{error}}</small></div>
+                           {% endfor %}
+                           {% endif %}
+                                 <div class="input-group">
+                                    {{form.first_name}}
+                                 </div>
+                              </li>
+                              <li class="col-md-6">
+                                 <label> Prénom : </label>
+                                 {% if form.last_name.errors %}
+                                 {% for error in form.last_name.errors %}
+                                 <div class="div-error-{{form.pwd.name}}"><small class="text-danger">{{error}}</small></div>
+                                  {% endfor %}
+                                  {% endif %}
+                                 <div class="input-group">
+                                    {{form.last_name}}
+                                 </div>
+                              </li>
+                              <li class="col-md-6">
+                                 <label> Email : </label>
+                                 {% if form.email.errors %}
+                                 {% for error in form.email.errors %}
+                                 <div class="div-error-{{form.pwd.name}}"><small class="text-danger">{{error}}</small></div>
+                                 {% endfor %}
+                                 {% endif %}
+                                 <div class="input-group">
+                                    {{form.email}}
+                                 </div>
+                              </li>
+                              <li class="col-md-6">
+                                 <label> Nom d'utilisateur : </label>
+                                 {% if form.username.errors %}
+                                 {% for error in form.username.errors %}
+                                 <div class="div-error-{{form.pwd.name}}"><small class="text-danger">{{error}}</small></div>
+                                  {% endfor %}
+                                  {% endif %}
+                                 <div class="input-group">
+                                    {{form.username}}
+                                 </div>
+                              </li>
+                              <li class="col-md-6">
+                                 <label> Mot de passe : </label>
+                                 {% if form.pwd.errors %}
+                                 {% for error in form.pwd.errors %}
+                                 <div class="div-error-{{form.pwd.name}}"><small class="text-danger">{{error}}</small></div>
+                                 {% endfor %}
+                                 {% endif %}
+                                 <div class="input-group">
+                                    {{form.pwd}}
+                                 </div>
+                              </li>
+                              <li class="col-md-6">
+                                 <label>Confirmation mot de passe : </label>
+                                 {% if form.pwd2.errors %}
+                                  {% for error in form.pwd2.errors %}
+                                 <div class="div-error-{{form.pwd.name}}"><small class="text-danger">{{error}}</small></div>
+                                  {% endfor %}
+                                  {% endif %}
+                                 <div class="input-group">
+                                    {{form.pwd2}}
+                                 </div>
+                              </li>
+                              <li class="col-md-12">
+                                 <div class="input-group form-check">
+                                    <p>{{form.conditions}} <label class="form-check-label"> J’ai lu et j’accepte  <a href="#">les conditions générales d’utilisation </a></label> <strong>d'Agri-Mairie.</strong></p>
+                                 </div>
+                              </li>
+                              <li class="col-md-12">
+                                 <button class="register">Créer un compte</button>
+                              </li>
+                           </ul>
+                        </form>
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+         </section>
+         <!--Causes End-->
+         <script src="{% static 'app_login/script.js'%}" charset="utf-8"></script>
+{% endblock %}

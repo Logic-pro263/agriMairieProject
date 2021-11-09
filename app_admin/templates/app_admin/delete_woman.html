@@ -1,0 +1,32 @@
+{% extends 'app_admin/base.html' %}
+{% block title %} Effacer une femme {% endblock %}
+{% block style %}
+    <style>
+        body{
+            background-color:rgb(229, 227, 227)
+        }
+    </style>
+{% endblock %}
+{% block dashbord %}
+{% load static %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="border bg-white p-3 ">
+                <h3 class="text-center">Effacer une femme</h3>
+                <hr>
+                <div class="alert alert-danger">
+                    Êtes vous sûr de vouloir effacer cette femme ?
+                </div>
+                <form class="text-center" action="" method="post">
+                    {% csrf_token %}
+                    <div class="btn btn-secondary"><a class="text-white" href="{% url 'toutes-les-femmes' %}">Annuler</a></div>
+                    <button class="btn btn-danger" type="submit" value="confirmer"> Confirmer suppression</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

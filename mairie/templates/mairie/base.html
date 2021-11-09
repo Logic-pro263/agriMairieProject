@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="fr">
+
+<head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="Team-Mali">
+      <link rel="icon" href="{% static 'mairie/images/favicon.png' %}">
+      <title>{% block title %}{% endblock %}</title>
+      <!-- CSS FILES START -->
+      <link rel="stylesheet" href="{% static 'mairie/css/custom.css' %}">
+      <link rel="stylesheet" href="{% static 'mairie/css/color.css' %}" >
+      <link rel="stylesheet" href="{% static 'mairie/css/responsive.css' %}" >
+      <link rel="stylesheet" href="{% static 'mairie/css/owl.carousel.min.css' %}" >
+      <link rel="stylesheet" href="{% static 'mairie/css/bootstrap.min.css' %}" >
+      <link rel="stylesheet" href="{% static 'mairie/css/prettyPhoto.css' %}" >
+      <link rel="stylesheet" href="{% static 'mairie/css/all.min.css' %}" >
+   {% block style %} {% endblock %}
+      <!-- CSS FILES End -->
+   </head>
+   <body>
+      <div class="wrapper home">
+         <!--Header Start-->
+         <header class="header-style-3 wf100">
+            <div class="topbar">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-6">
+                        <p><i class="fas fa-map-marker-alt"></i> Bamako - Mali Kalaban Coura</p>
+                     </div>
+                     <div class="col-md-6">
+                        <ul class="topbar-social">
+                           <li class="social-links"> <a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i class="fab fa-twitter"></i></a>
+                              <a href="#"><i class="fab fa-linkedin-in"></i></a> <a href="#"><i class="fab fa-instagram"></i></a>
+                              <a href="#"><i class="fab fa-youtube"></i></a> </li>
+                           {% if user.is_authenticated %}
+                           <li> <a class="acclink" href="{% url 'profilePage' %}"><i class="far fa-user-circle"></i> {{user.username}}</a> </li>
+                           {% else %}
+                           <li> <a class="acclink" href="{% url 'registerPage' %}"><i class="far fa-user-circle"></i> S'inscrire</a> </li>
+                           {% endif %}
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="h3-logo-row">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-2 col-sm-4">
+                        <div class="logo"><a href="{% url 'indexPage' %}"><img src="{% static 'mairie/images/logo-m.png' %}" alt=""></a></div>
+                     </div>
+                     <div class="col-md-5 col-sm-12">
+                        <ul class="header-contact">
+                           <li><i class="fas fa-phone"></i> +223 44 44 44 44</li>
+                           <li><i class="fas fa-envelope"></i> agrimairie@gmail.com</li>
+                        </ul>
+                     </div>
+                     <div class="col-md-5 col-sm-12">
+                        {% if user.is_authenticated %}
+                        <a class="con-btn" href="{% url 'logoutPage' %}">Déconnexion</a>
+                        {% else %}
+                        <a class="con-btn" href="{% url 'loginPage' %}">Connexion</a>
+                        {% endif %}
+                        <form method="" action="{% url 'resultat' %}" class="search-form">
+                           <input class="form-control" type="search" placeholder="Recherhe" aria-label="Search" name="search">
+                           <button class="sbtn" type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="navrow">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12">
+                        {% if user.is_authenticated %}
+                        <nav class="navbar navbar-expand-lg">
+                           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <i class="fas fa-bars"></i> </button>
+                           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                              <ul class="navbar-nav mr-auto">
+                                 <li class="nav-item"> <a class="nav-link" href="{% url 'index' %}">Accueil</a> </li>
+                                 <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="events-grid.html"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Mairie </a>
+                                    <ul class="dropdown-menu" >
+                                       <li><a href="{% url 'CooeperativePage' %}">Listes des Coopératives</a></li>
+                                       <li><a href="{% url 'womanPage' %}">Listes des femmes</a></li>
+                                    </ul>
+                                 </li>
+                                 <li class="nav-item"> <a class="nav-link" href="{% url 'indexBlog' %}">Blog</a> </li>
+                                 <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Pages </a>
+                                    <ul class="dropdown-menu" >
+                                       <li>
+                                          <a href="{% url 'galleryPage' %}">Galerie</a>
+                                       </li>
+                                    </ul>
+                                 </li>
+                                 <li class="nav-item"> <a class="nav-link" href="{% url 'aboutPage' %}">A propos</a> </li>
+                                 <li class="nav-item"> <a class="nav-link" href="{% url 'contactPage' %}">Contact</a> </li>
+                              </ul>
+                           </div>
+                        </nav>
+                        {% else %}
+                        <nav class="navbar navbar-expand-lg">
+                           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <i class="fas fa-bars"></i> </button>
+                           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                              <ul class="navbar-nav mr-auto">
+                                 <li class="nav-item"> <a class="nav-link" href="{% url 'index' %}">Accueil</a> </li>
+                                 <li class="nav-item"> <a class="nav-link" href="{% url 'contactPage' %}">Contact</a> </li>
+                              </ul>
+                           </div>
+                        </nav>
+                        {% endif%}
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </header>
+         <!--Header End-->
+            {% block content %} {% endblock %}
+         <!--Footer Start-->
+         <footer class="h3footer wf100">
+            <div class="container">
+               <div class="row">
+                  <!--Footer Widget Start-->
+                  <div class="col-md-4 col-sm-6">
+                     <div class="footer-widget">
+                        <h3>A propos Agri-Mairie</h3>
+                        <p>  <span style="color:rgb(0,115,113)">AGRI-MAIRIE</span> est une plate-forme digitale pour l'autonomisation feminine
+                           permettant la connexion des femmes rurale a
+                           la mairie et aux acteurs économique mais aussi de valoriser les produits locaux sur le marché.</p>
+                        <p> Lien uitiles : </p>
+                        {% if user.is_authenticated %}
+                        <ul class="quick-links">
+                           <li><a href="#">Conditions générales</a></li>
+                           <li><a href="{% url 'CooeperativePage' %}">Les cooéperative</a></li>
+                           <li><a href="{% url 'womanPage' %}">Les femmes</a></li>
+                        </ul>
+                        {% else %}
+                        <ul class="quick-links">
+                           <li><a href="{% url 'registerPage' %}"> Créer un compte</a></li>
+                           <li><a href="{% url 'loginPage' %}">Connexion</a></li>
+                           <li><a href="#">Conditions générales</a></li>
+                           <li><a href="{% url 'CooeperativePage' %}">Les cooéperative</a></li>
+                           <li><a href="{% url 'womanPage' %}">Les femmes</a></li>
+                        {% endif %}
+                     </div>
+                  </div>
+                  <!--Footer Widget End-->
+                  <!--Footer Widget Start-->
+                  <div class="col-md-4 col-sm-6">
+                     h
+                  </div>
+                  <!--Footer Widget End-->
+                  <!--Footer Widget Start-->
+                  <div class="col-md-4 col-sm-12">
+                     <div class="footer-widget">
+                        <h3>Restez Informer</h3>
+                        <div class="newsletter">
+                           <ul>
+                              <li>
+                                 <input type="text" placeholder="Nom">
+                              </li>
+                              <li>
+                                 <input type="text" placeholder="Adresse email">
+                              </li>
+                              <li>
+                                 <input type="submit" value="S'inscrire">
+                              </li>
+                           </ul>
+                        </div>
+                        <div class="footer-social"><a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i class="fab fa-twitter"></i></a> <a href="#"><i class="fab fa-linkedin-in"></i></a> <a href="#"><i class="fab fa-instagram"></i></a> <a href="#"><i class="fab fa-youtube"></i></a> </div>
+                     </div>
+                  </div>
+                  <!--Footer Widget End-->
+               </div>
+               <div class="row footer-copyr">
+                  <div class="col-md-4 col-sm-4"> <img src="{% static 'mairie/images/h3-flogo.png' %}" alt=""> </div>
+                  <div class="col-md-8 col-sm-8">
+                        <p>Copyright &copy;. 2021 Tous droits reserves</p>
+                     </div>
+               </div>
+            </div>
+         </footer>
+         <!--Footer End-->
+      </div>
+      <!--   JS Files Start  -->
+      <script src="{% static 'mairie/js/jquery-3.3.1.min.js' %}"></script>
+      <script src="{% static 'mairie/js/jquery-migrate-1.4.1.min.js' %}"></script>
+      <script src="{% static 'mairie/js/popper.min.js' %}"></script>
+      <script src="{% static 'mairie/js/bootstrap.min.js' %}"></script>
+      <script src="{% static 'mairie/js/owl.carousel.min.js' %}"></script>
+      <script src="{% static 'mairie/js/jquery.prettyPhoto.js' %}"></script>
+      <script src="{% static 'mairie/js/isotope.min.js' %}"></script>
+      <script src="{% static 'mairie/js/custom.js' %}"></script>
+   </body>
+
+
+</html>

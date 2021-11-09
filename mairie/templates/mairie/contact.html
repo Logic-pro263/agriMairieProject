@@ -1,0 +1,87 @@
+{% extends 'mairie/base.html' %}
+{% block title %} Contact {% endblock %}
+{% block content %}
+{% load static %}
+         <!--Inner Header Start-->
+         <section class="wf100 p100 inner-header">
+            <div class="container">
+               <h1>Contactez nous</h1>
+            </div>
+         </section>
+         <!--Inner Header End--> 
+         <!--Contact Start-->
+         <section class="contact-page wf100 p80">
+            <div class="container">
+               {% if email %}
+               <div class="alert alert-success">{{confirmation}}</div>
+               {% endif %}
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="contact-form">
+                        <h3>Formulaire de contact</h3>
+                        <form method="POST" action="">
+                           {% csrf_token %}
+                           <ul class="cform">
+                           <li class="half pr-15">
+                              <input type="text" name="name" class="form-control is-valid" placeholder="Full Name" required>
+                           </li>
+                           <li class="half pl-15">
+                              <input type="text" name="email" class="form-control" placeholder="Email" required>
+                           </li>
+                           <li class="full">
+                              <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                           </li>
+                           <li class="full">
+                              <textarea class="textarea-control" name="message" placeholder="Message" required></textarea>
+                           </li>
+                           <li class="full">
+                              <input type="submit" value="Envoyer" class="fsubmit">
+                           </li>
+                        </ul>
+                        </form>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="google-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11418.310112375979!2d-74.00986187433132!3d40.710981182716246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY!5e0!3m2!1sen!2s!4v1540972202179"></iframe>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="container contact-info">
+               <div class="row">
+                  <div class="col-md-12">
+                     <h3>Information</h3>
+                  </div>
+                  <!--Contact Info Start-->
+                  <div class="col-md-4">
+                     <div class="c-info">
+                        <h6>Adresse:</h6>
+                        <p> Bamako - Mali</p>
+                        <p> Kalaban - Coura </p>
+                     </div>
+                  </div>
+                  <!--Contact Info End--> 
+                  <!--Contact Info Start-->
+                  <div class="col-md-4">
+                     <div class="c-info">
+                        <h6>Contact:</h6>
+                        <p><strong>Phone:</strong> +223 73 45 16 76</p>
+                        <p><strong>Fix:</strong> +223 44 44 44 44</p>
+                     </div>
+                  </div>
+                  <!--Contact Info End--> 
+                  <!--Contact Info Start-->
+                  <div class="col-md-4">
+                     <div class="c-info">
+                        <h6>Pour plus d'information:</h6>
+                        <p><strong>Email:</strong> agrimairie@gmail.com</p>
+                        <p>agrimairie@agrimairie.com</p>
+                     </div>
+                  </div>
+                  <!--Contact Info End--> 
+               </div>
+            </div>
+         </section>
+         <!--Contact End--> 
+{% endblock %}

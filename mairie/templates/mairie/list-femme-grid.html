@@ -1,0 +1,73 @@
+{% extends 'mairie/base.html' %}
+{% block title %} Liste des femmes {% endblock %}
+{% block style %}
+<style>
+   #c-img1{
+      width: 285px;
+      height: 464px;
+   }
+</style>
+{% endblock %}
+{% block content %}
+{% load static %}
+         <!--Inner Header Start-->
+         <section class="wf100 p100 inner-header">
+            <div class="container">
+               <h1>  <h1>Liste des femmes enregistrées sur la plateforme</h1></h1>
+            </div>
+         </section>
+         <!--Inner Header End-->
+         <!--Causes Start-->
+         <section class="wf100 p80 projects">
+            <div class="projects-grid custom-gap">
+               <div class="container">
+                  <div class="row">
+                     {% for femme in liste_femmes %}
+                     <!--Project box Start-->
+                     <div class="col-md-3 col-sm-6">
+                        <div class="pro-box">
+                           {% if femme.picture %}
+                           <img id="c-img1" src="{{ femme.picture.url }}" alt="">
+                           {% endif %}
+                           <h5>Nom: {{femme.name}}</h5>
+                           <div class="pro-hover">
+                              <h6>{{femme.name}}</h6>
+                              <p>{{femme.activity|truncatewords:5}}</p>
+                              <a href="{% url 'detailWoman' femme.id %}">en savoir sur {{femme.name}}</a>
+                           </div>
+                        </div>
+                     </div>
+                     {% endfor %}
+                     <!--Project box End-->
+                  </div>
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="gt-pagination mt40">
+                           <nav>
+                              <ul class="pagination">
+                                 {% if liste_femmes.has_previous %}
+                                 <li class="page-item">
+                                    <a class="page-link" href="?page={{liste_femmes.previous_page_number}}" aria-label="Previous"></a>
+                                    <span aria-hidden="true"><i class="fas fa-angle-left"></i></span>
+                                 </li>
+                                 <li class="page-item"><a class="page-link" href="?page={{liste_femmes.previous_page_number}}">{{liste_femmes.previous_page_number}}</a></li>
+                                 {% endif %}
+                                 <li class="page-item active"><a class="page-link" href="?page={{liste_femmes.mumber}}">{{liste_femmes.number}}</a></li>
+                                 {% if liste_femmes.has_next %}
+                                 <li class="page-item"><a class="page-link" href="?page={{liste_femmes.next_page_number}}">{{liste_femmes.next_page_number}}</a></li>
+                                 <li class="page-item">
+                                    <a class="page-link" href="?page={{liste_femmes.next_page_number}}" aria-label="Next">
+                                    <span aria-hidden="true"><i class="fas fa-angle-right"></i></span>
+                                    </a>
+                                 </li>
+                                 {% endif %}
+                              </ul>
+                           </nav>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!--Causes End-->
+{% endblock %}

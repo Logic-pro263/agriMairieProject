@@ -1,0 +1,425 @@
+{% extends 'mairie/base.html' %}
+
+{% block title %} Accueil {% endblock %}
+
+{% block style %}
+   <style>
+      #img-team{
+         width: 360px;
+         height: 480px;
+         margin: auto;
+      }
+      .social-l{
+         margin-top: -14px;
+      }
+   </style>
+{% endblock %}
+   
+{% block content %}
+{% load static %}
+         <!--Slider Start-->
+         <section id="home-slider" class="owl-carousel owl-theme wf100">
+            <div class="item">
+               <div class="slider-caption h3slider">
+                  <div class="container">
+                     <strong>AGRI-MAIRIE</strong>
+                     <h1>Autonomisation feminine</h1>
+                     <a href="{% url 'womanPage' %}">Les femmes</a>
+                  </div>
+               </div>
+               <img src="{% static 'mairie/images/h3slide2.jpg' %}" alt="">
+            </div>
+            <div class="item">
+               <div class="slider-caption h3slider">
+                  <div class="container">
+                     <strong>AGRI-MAIRIE</strong>
+                     <h1>chaîne agricole renforcer</h1>
+                     <a href="{% url 'CooeperativePage' %}">Les Coopératives</a>
+                  </div>
+               </div>
+               <img src="{% static 'mairie/images/product_img5.jpg' %}" alt="">
+            </div>
+            <div class="item">
+               <div class="slider-caption h3slider">
+                  <div class="container">
+                     <strong>AGRI-MAIRIE</strong>
+                     <h1>Cadre juridique favorable </h1>
+                     <a href="{% url 'contactPage' %}">Nous rejoindre</a>
+                  </div>
+               </div>
+               <img src="{% static 'mairie/images/product_img3.jpg' %}" alt="">
+            </div>
+         </section>
+         <!--Slider End--> 
+         <!--Service Area Start-->
+         <section class="donation-join wf100">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="donation-wrap mt-5">
+                        <h2>Plus de <span style=color:rgb(0,115,113);>10 000 femmes</span> bénéficiaire d'une <span style=color:rgb(0,115,113);>autonomisation stable</span> en <span style=color:rgb(0,115,113);> 3 ans</span></h2>
+
+                     </div>
+                  </div>
+                  <div class="col-md-3 col-sm-6">
+                     <div class="volbox">
+                        <img src="{% static 'mairie/images/shakehandicon.png' %}" alt="">
+                        <h5>Devenir partenaire</h5>
+                        <p>Devenez partenaire avec Agri-Mairie pour aider ces femmes à avoir une autonomisation performante </p>
+                        <a href="{% url 'contactPage' %}">Nous rejoindre</a>
+                     </div>
+                  </div>
+                  <div class="col-md-3 col-sm-6">
+                     <div class="volbox nob">
+                        <img src="{% static 'mairie/images/moneyicon.png' %}" alt="">
+                        <h5>Faire un don</h5>
+                        <p> Faites nous un don pour nous aider à atteindre nos objectifs visés pour ces femmes dans les zones rurale</p>
+                        <a href="{% url 'contactPage' %}">Nous supporter</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!--Service Area End--> 
+         <!--About Section Start-->
+         <section class="h3-about wf100 p80">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="h3-aboutxt">
+                        <h1>Nous aidons <span>les femmes rurales</span> a avoir confiance en elle</h1>
+                        <p> We are providing world-wide all kinds of eco frienly services, explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system.</p>
+                        <p> Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat. </p>
+                        <ul class="counter">
+                           <li>
+                              <p class="counter-count">69000</p>
+                              <p class="ctxt">Femmes Inscrites</p>
+                           </li>
+                           <li>
+                              <p class="counter-count">59000</p>
+                              <p class="ctxt">Nombre association</p>
+                           </li>
+                           <li>
+                              <p class="counter-count">49000</p>
+                              <p class="ctxt">Partenaires</p>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="col-md-6"> <img src="{% static 'mairie/images/bout.png' %}" alt=""> </div>
+               </div>
+            </div>
+         </section>
+         <!--About Section End--> 
+         <!--Our Core Projects Start-->
+         <section class="our-core-projects wf100 p80">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="h3-stitle">
+                        <h1>Nos Visions</h1>
+                        <p> We are working on different projects related with Eco, and we are providing all kinds of Eco-Friendly and Environmental Services. </p>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <div id="core-projects-slider" class="owl-carousel owl-theme">
+                        <!--Project Box Start-->
+                        <div class="item">
+                           <div class="ocp-box">
+                              <div class="ocp-thumb">
+                              <a href="#"><i class="fas fa-link"></i></a>
+                              <img src="{% static 'mairie/images/ocp1.jpg' %}" alt=""></div>
+                              <h5> <a href="#">Saving Wildlife Generations</a> </h5>
+                           </div>
+                        </div>
+                        <!--Project Box End-->
+                        <!--Project Box Start-->
+                        <div class="item">
+                           <div class="ocp-box">
+                              <div class="ocp-thumb">
+                              <a href="#"><i class="fas fa-link"></i></a>
+                              <img src="{% static 'mairie/images/ocp4.jpg' %}" alt=""></div>
+                              <h5> <a href="#">Control Pollution
+                                 & Environment</a> 
+                              </h5>
+                           </div>
+                        </div>
+                        <!--Project Box End--> 
+                        <!--Project Box Start-->
+                        <div class="item">
+                           <div class="ocp-box">
+                              <div class="ocp-thumb">
+                              <a href="#"><i class="fas fa-link"></i></a>
+                              <img src="{% static 'mairie/images/ocp5.jpg' %}" alt=""></div>
+                              <h5> <a href="#">Save Plants &
+                                 Forest Planting</a> 
+                              </h5>
+                           </div>
+                        </div>
+                        <!--Project Box End--> 
+                        <!--Project Box Start-->
+                        <div class="item">
+                           <div class="ocp-box">
+                              <div class="ocp-thumb">
+                              <a href="#"><i class="fas fa-link"></i></a>
+                              <img src="{% static 'mairie/images/ocp6.jpg' %}" alt=""></div>
+                              <h5> <a href="#">Implement Solar
+                                 & Wind Energies</a> 
+                              </h5>
+                           </div>
+                        </div>
+                        <!--Project Box End--> 
+                        <!--Project Box Start-->
+                        <div class="item">
+                           <div class="ocp-box">
+                              <div class="ocp-thumb">
+                              <a href="#"><i class="fas fa-link"></i></a>
+                              <img src="{% static 'mairie/images/ocp1.jpg' %}" alt=""></div>
+                              <h5> <a href="#">Saving Wildlife Generations</a> </h5>
+                           </div>
+                        </div>
+                        <!--Project Box End--> 
+                        <!--Project Box Start-->
+                        <div class="item">
+                           <div class="ocp-box">
+                              <div class="ocp-thumb">
+                              <a href="#"><i class="fas fa-link"></i></a>
+                              <img src="{% static 'mairie/images/ocp2.jpg' %}" alt=""></div>
+                              <h5> <a href="#">Recycling & Waste
+                                 Management</a> 
+                              </h5>
+                           </div>
+                        </div>
+                        <!--Project Box End--><!--Project Box Start-->
+                        <div class="item">
+                           <div class="ocp-box">
+                              <div class="ocp-thumb">
+                              <a href="#"><i class="fas fa-link"></i></a>
+                              <img src="{% static 'mairie/images/ocp2.jpg' %}" alt=""></div>
+                              <h5> <a href="#">Recycling & Waste
+                                 Management</a>
+                              </h5>
+                           </div>
+                        </div>
+                        <!--Project Box End-->
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!--Our Core Projects End--> 
+         <!--News and Events Start-->
+         <section class="news-events wf100 p80">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-8">
+                     <h1>Articles récents</h1>
+                     <!--News Blog Start-->
+                     {% for post in posts %}
+                     <div class="news-block mb30">
+                        <div class="row">
+                           <div class="col-md-6 col-sm-6">
+                              <div class="news-thumb">
+                                 <a href="{% url 'post_detail' post.slug %}"><i class="fas fa-link"></i></a>
+                                 <img src="{{post.image.url}}" alt="">
+                              </div>
+                           </div>
+                           <div class="col-md-6 col-sm-6">
+                              <div class="news-txt">
+                                 <h4><a href="{% url 'post_detail' post.slug %}">{{post.title}}</a></h4>
+                                 <ul class="news-meta">
+                                    <li><i class="fas fa-calendar-alt"></i>{{post.created_on}}</li>
+                                    <li><i class="fas fa-comments"></i> {{post.comments.count}} Commentaires</li>
+                                 </ul>
+                                 <p>{{post.content|truncatewords:10}}</p>
+                                 <a class="rm" href="{% url 'post_detail' post.slug %}">Lire plus</a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     {% endfor %}
+                     <!--News Blog End-->
+                  </div>
+                  <div class="col-md-4">
+                     <!--Events Start-->
+                     <div class="h3-events">
+                        <h1>Decouvrir</h1>
+                        <div id="h3-events" class="owl-carousel owl-theme">
+                           <!--Event box Start-->
+                           <div class="item">
+                              <div class="event-box">
+                                 <div class="event-thumb">
+                                  <a href="{% url 'indexBlog' %}"><i class="fas fa-link"></i></a>
+                                 <img src="{% static 'mairie/images/eventslideimg1' %}.jpg" alt=""></div>
+                                 <div class="event-txt">
+                                    <ul class="event-meta">
+                                       <li>Le 17 Septembre, 2018</li>
+                                       <li>09:30 am - 03:00 pm</li>
+                                    </ul>
+                                    <h4><a href="#">Get the Wild Generations Safe</a></h4>
+                                    <p> <i class="fas fa-map-marker-alt"></i> Expo Center, Lahore-Pakistan </p>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--Event box End--> 
+                           <!--Event box Start-->
+                           <div class="item">
+                              <div class="event-box">
+                                 <div class="event-thumb"> <a href="#"><i class="fas fa-link"></i></a><img src="{% static 'mairie/images/eventslideimg2' %}.jpg" alt=""></div>
+                                 <div class="event-txt">
+                                    <ul class="event-meta">
+                                       <li>17 September, 2018</li>
+                                       <li>09:30 am - 03:00 pm</li>
+                                    </ul>
+                                    <h4><a href="{% url 'indexBlog' %}">Get the Wild Generations Safe</a></h4>
+                                    <p> <i class="fas fa-map-marker-alt"></i> Expo Center, Lahore-Pakistan </p>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--Event box End--> 
+                           <!--Event box Start-->
+                           <div class="item">
+                              <div class="event-box">
+                                 <div class="event-thumb"> <a href="#"><i class="fas fa-link"></i></a><img src="{% static 'mairie/images/eventslideimg3' %}.jpg" alt=""></div>
+                                 <div class="event-txt">
+                                    <ul class="event-meta">
+                                       <li>17 September, 2018</li>
+                                       <li>09:30 am - 03:00 pm</li>
+                                    </ul>
+                                    <h4><a href="#">Get the Wild Generations Safe</a></h4>
+                                    <p> <i class="fas fa-map-marker-alt"></i> Expo Center, Lahore-Pakistan </p>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--Event box End--> 
+                        </div>
+                     </div>
+                     <!--Events End--> 
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!--News and Events End--> 
+         <!--Team Section Start-->
+         <section class="wf100 p80 h3teams-section">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="h3-stitle text-center">
+                        <h1>La TEAM MALI</h1>
+                        <p> Team Mali est une équipe de composée de trois jeunes dynamyque qui lutte pour l'autonomisation fémine.</p>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <!--Team Box Start-->
+                  <div class="col-md-4 col-sm-4">
+                     <div class="team-box">
+                        <img id="img-team" src="{% static 'mairie/images/profil1.jpg' %}" alt="">
+                        <div class="team-info">
+                           <h3>Adama KANTE</h3>
+                           <p>Responsable finance, CFO</p>
+                           <div class="share-post wf100">
+                              <a href="#" class="fb"><i class="fab fa-facebook-f"></i></a>
+                              <a href="#" class="tw"><i class="fab fa-twitter"></i></a>
+                              <a href="#" class="link"><i class="fab fa-linkedin-in"></i></a>
+                              <a href="#" class="insta"><i class="fab fa-instagram"></i></a>
+                          </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!--Team Box Start--> 
+                  <!--Team Box Start-->
+                  <div class="col-md-4 col-sm-4">
+                     <div class="team-box">
+                        <img id="img-team" src="{% static 'mairie/images/profil2.jpg' %}" alt="">
+                        <div class="team-info">
+                           <h3>Salimata TRAORE</h3>
+                           <p>Responsable marketing & communication, CEO</p>
+                           <div class="share-post wf100 social-l">
+                              <a href="#" class="fb"><i class="fab fa-facebook-f"></i></a>
+                              <a href="#" class="tw"><i class="fab fa-twitter"></i></a>
+                              <a href="#" class="link"><i class="fab fa-linkedin-in"></i></a>
+                              <a href="#" class="insta"><i class="fab fa-instagram"></i></a>
+                          </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!--Team Box Start--> 
+                  <!--Team Box Start-->
+                  <div class="col-md-4 col-sm-4">
+                     <div class="team-box">
+                        <img id="img-team" src="{% static 'mairie/images/profil4.jpg' %}" alt="">
+                        <div class="team-info">
+                           <h3>Salif SANOGO</h3>
+                           <p>Responsable technique & développeur, CTO</p>
+                           <div class="share-post wf100">
+                               <a href="#" class="fb"><i class="fab fa-facebook-f"></i></a>
+                               <a href="#" class="tw"><i class="fab fa-twitter"></i></a>
+                               <a href="#" class="link"><i class="fab fa-linkedin-in"></i></a>
+                               <a href="#" class="insta"><i class="fab fa-instagram"></i></a>
+                           </div>
+                        </div>
+                  </div>
+                  <!--Team Box Start--> 
+               </div>
+            </div>
+            </div>
+         </section>
+         <!--Team Section End--> 
+         <!--Testimonials Start-->
+         <section class="h3testimonials wf100 p80">
+            <h1 class="text-center">Que disent les gens ?</h1>
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-12">
+                     <div id="h3testimonials" class="owl-carousel owl-theme">
+                        <!--testimonials box start-->
+                        {% for c_comment in c_comments %}
+                        <div class="item">
+                           <p>{{c_comment.comment}} </p>
+                           <div class="tuser"> <img src="{{user.profile.profile_image.url}}" alt=""> <strong>{{c_comment.full_name}}</strong> </div>
+                        </div>
+                        {% endfor %}
+                        <!--testimonials box End--> 
+                        <!--testimonials box start-->
+                        {% for m_comment in m_comments %}
+                        <div class="item">
+                           <p>{{m_comment.comment}}</p>
+                           <div class="tuser"> <img src="{{user.profile.profile_image.url}}" alt=""> <strong>{{m_comment.full_name}}</strong> </div>
+                        </div>
+                        {% endfor %}
+                        <!--testimonials box End-->
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!--Testimonials End-->
+<!--InstaGram Start-->
+         <div class="instagram p80">
+            <ul>
+               <li> <a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'mairie/images/insta1.jpg' %}" alt=""> </li>
+               <li> <a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'mairie/images/insta2.jpg' %}" alt=""> </li>
+               <li> <a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'mairie/images/insta3.jpg' %}" alt=""> </li>
+               <li> <a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'mairie/images/insta4.jpg' %}" alt=""> </li>
+               <li> <a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'mairie/images/insta5.jpg' %}" alt=""> </li>
+               <li> <a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'mairie/images/insta6.jpg' %}" alt=""> </li>
+               <li> <a href="#"> <i class="fas fa-search"></i> </a> <img src="{% static 'mairie/images/insta7.jpg' %}" alt=""> </li>
+            </ul>
+         </div>
+         <!--InstaGram End-->
+         <!--Partner Logos Section Start-->
+         <div class="partner-logos home3 wf100">
+            <div class="container">
+               {% for partenaire in liste_partenaire %}
+               <div id="partner-logos" class="owl-carousel owl-theme">
+                  <div class="item"><img src="{{ partenaire.image.url }}" alt=""></div>
+               </div>
+            </div>
+            {% endfor %}
+         </div>
+         <!--Partner Logos Section End-->
+{% endblock %}

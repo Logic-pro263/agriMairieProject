@@ -1,0 +1,33 @@
+{% extends 'app_admin/base2.html' %}
+{% block title %} Modification {% endblock %}
+{% block style %}
+<style>
+    body{
+        background-color:rgb(229, 227, 227)
+        }
+</style>
+{% endblock %}
+{% block dashbord %}
+{% load static %}
+{% load crispy_forms_tags %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="border bg-white p-3">
+                   <h3>Modifier</h3>
+            <hr>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <div class="btn btn-secondary mt-3">
+                        <a class="text-white" href="{% url 'toutes-les-cooeperatives' %}"> Annuler</a>
+                    </div>
+                    <button class="btn btn-info mt-3" type="submit" value="Modifier">Modifier</button>
+                </form>
+              </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+

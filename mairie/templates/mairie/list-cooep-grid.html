@@ -1,0 +1,87 @@
+{% extends 'mairie/base.html' %}
+{% block title %} Liste des coopératives {% endblock %}
+{% block style %}
+<style>
+   #c-img1{
+      width:320px;
+      height:270px;
+   }
+</style>
+{% endblock %}
+{% block content %}
+{% load static %}
+         <!--Inner Header Start-->
+         <section class="wf100 p100 inner-header">
+            <div class="container">
+               <h1>Liste des coopérative enregistrées sur la plateforme</h1>
+            </div>
+         </section>
+         <!--Inner Header End--> 
+         <!--Causes Start-->
+         <section class="wf100 p80 events">
+            <div class="event-posts">
+               <div class="container">
+                  <div class="row">
+                     {% for cooeperative in liste_cooeperative %}
+                     <!--Blog Post Start-->
+                     <div class="col-md-3 col-sm-6">
+                        <div class="event-post">
+                           <div class="event-thumb">
+                              <a href="{% url 'detailCooeperative' cooeperative.id %}"><i class="fas fa-link"></i>
+                              {% if cooeperative.image %}
+                              </a> <img id="c-img1" src="{{ cooeperative.image.url }}" alt="" style="width:320px heigth:260px">
+                              {% endif %}
+                              <ul class="post-meta">
+                                 <li>Inscrit il y'a  : {{cooeperative.created_at|timesince}}</li>
+                              </ul>
+                           </div>
+                           <div class="event-txt">
+                              <h5><a href="{% url 'detailCooeperative' cooeperative.id %}">{{cooeperative.name|upper}}</a></h5>
+                              <p><i class="fas fa-home"></i> Village : {{cooeperative.city}} </p>
+                              <p><i class="fas fa-users"></i> Membres : {{cooeperative.members_in}} </p>
+                              <p><i class="far fa-calendar-alt"></i> Date de création : {{cooeperative.creation_date}} </p>
+                              <p><i class="far fa-comment-alt"></i> Description : <br/>{{cooeperative.description|truncatewords:10}} </p>
+                           </div>
+                        </div>
+                     </div>
+                     <!--Blog Post End-->
+                     {% endfor%}
+                  </div>
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="gt-pagination mt20">
+                           <nav>
+                              <ul class="pagination">
+                                 {% if liste_cooeperative.has_previous %}
+                                 <li class="page-item">
+                                    <a class="page-link" href="?page={{liste_cooeperative.previous_page_number}}" aria-label="Previous">
+                                       <span aria-hidden="true"><i class="fas fa-angle-left"></i></span>
+                                    </a>
+                                 </li>
+                                 <li class="page-item">
+                                    <a class="page-link" href="?page={{liste_cooeperative.previous_page_number}}">{{liste_cooeperative.previous_page_number}}</a>
+                                 </li>
+                                 {% endif %}
+
+                                 <li class="page-item active"><a class="page-link" href="?page={{liste_cooeperative.number}}">{{liste_cooeperative.number}}</a></li>
+
+                                 {% if liste_cooeperative.has_next %}
+                                 <li class="page-item">
+                                    <a class="page-link" href="?page={{liste_cooeperative.next_page_number}}">{{liste_cooeperative.next_page_number}}</a>
+                                 </li>
+                                 <li class="page-item">
+                                    <a class="page-link" href="?page={{liste_cooeperative.next_page_number}}" aria-label="Next">
+                                    <span aria-hidden="true"><i class="fas fa-angle-right"></i></span>
+                                    </a>
+                                 </li>
+                                 {% endif %}
+                              </ul>
+                           </nav>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!--Causes End--> 
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'mairie/base.html' %}
+{% block title %} Résultat de la recherche {% endblock %}
+{% load static %}
+{% block content%}
+<div class="container p-3">
+    <div class="body-card">
+        <h3 class="text-center">Résultat de votre recherche</h3>
+          {% if cooeperatives %}
+        <h3 class="text-center bg-success text-white mt-4 mb-4">Résutats dans la liste des coopératives</h3>
+     <div class="row">
+         {% for cooeperative in cooeperatives %}
+                     <!--Project box Start-->
+                     <div class="col-md-3 col-sm-6">
+                     <div class="card" style="width: 16rem;">
+                  <img src="{{cooeperative.image.url}}" class="card-img-top" alt="..." style="width: 16rem; height:22rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">{{cooeperative.name}}</h5>
+                    <p class="card-text">{{cooeperative.description|truncatewords:10}}</p>
+                    <a href="{% url 'detailCooeperative' cooeperative.id %}" class="btn btn-primary">En savoir plus</a>
+                  </div>
+                    </div>
+                     </div>
+         {% endfor %}
+         {% else %}
+         <p>Aucun resultat pour votre recherche</p>
+         {% endif %}
+     </div>
+        {% if members %}
+        <h3 class="text-center bg-success text-white mt-4 mb-4">Résutats dans la liste des femmes</h3>
+        <div class="row">
+         {% for member in members %}
+                     <!--Project box Start-->
+                     <div class="col-md-3 col-sm-6">
+                     <div class="card" style="width: 16rem;">
+                  <img src="{{member.picture.url}}" class="card-img-top" alt="..." style="width: 16rem; height:22rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">{{member.name}}</h5>
+                    <p class="card-text">{{menber.activity|truncatewords:10}}</p>
+                    <a href="{% url 'detailWoman' member.id %}" class="btn btn-primary">En savoir plus</a>
+                  </div>
+                    </div>
+                     </div>
+         {% endfor %}
+         {% else %}
+         <p>{{none}}</p>
+         {% endif %}
+     </div>
+    </div>
+</div>
+{% endblock %}

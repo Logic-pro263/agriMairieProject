@@ -35,7 +35,7 @@
                                  <!--Comment Start-->
                                  {% for comment in comments %}
                                  <li class="comment">
-                                    <div class="user-thumb"> <img src="{{user.profile.profile_image.url}}" alt=""></div>
+                                    <div class="user-thumb"> <img src="{% static 'images/auser.jpg' %}" alt=""></div>
                                     <div class="comment-txt">
                                        <h6> {{comment.full_name}} </h6>
                                        <p>{{comment.comment | linebreaks}} </p>

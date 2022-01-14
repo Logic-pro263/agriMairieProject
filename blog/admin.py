@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment
+from .models import Post, Comment, Authors
 
 # Register your models here.
 class postsAdmin(admin.ModelAdmin):
@@ -21,3 +21,5 @@ class CommentAdmin(admin.ModelAdmin):
         queryset.update(active=True)
 
 admin.site.register(Post, postsAdmin)
+admin.site.register(Authors)
+

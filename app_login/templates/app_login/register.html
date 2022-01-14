@@ -1,7 +1,7 @@
 {% extends 'mairie/base.html' %}
 {% block content %}
 {% load static %}
-{% load crispy_forms_tags %}
+{% load widget_tweaks %}
          <!--Causes Start-->
          <section class="wf100 p80">
             <div class="container">
@@ -21,71 +21,63 @@
                                  <label> Nom : </label>
                                  {% if form.first_name.errors %}
                            {% for error in form.first_name.errors %}
-                           <div class="div-error-{{form.pwd.name}}"><small class="text-danger">{{error}}</small></div>
+                           <div class="div-error-{{form.first_name.name}}"><small class="text-danger">{{error}}</small></div>
                            {% endfor %}
                            {% endif %}
                                  <div class="input-group">
-                                    {{form.first_name}}
+                                    {% render_field form.first_name class='form-control'%}
                                  </div>
                               </li>
                               <li class="col-md-6">
                                  <label> Prénom : </label>
                                  {% if form.last_name.errors %}
                                  {% for error in form.last_name.errors %}
-                                 <div class="div-error-{{form.pwd.name}}"><small class="text-danger">{{error}}</small></div>
+                                 <div class="div-error-{{form.last_name.name}}"><small class="text-danger">{{error}}</small></div>
                                   {% endfor %}
                                   {% endif %}
                                  <div class="input-group">
-                                    {{form.last_name}}
+                                    {% render_field form.last_name class='form-control' %}
                                  </div>
                               </li>
-                              <li class="col-md-6">
+                              <li class="col-md-6 mb-0">
                                  <label> Email : </label>
-                                 {% if form.email.errors %}
-                                 {% for error in form.email.errors %}
-                                 <div class="div-error-{{form.pwd.name}}"><small class="text-danger">{{error}}</small></div>
-                                 {% endfor %}
+                                 {% if error2 %}
+                                 <div class="div-error-{{error2}}"><small class="text-danger">{{error2}}</small></div>
                                  {% endif %}
                                  <div class="input-group">
-                                    {{form.email}}
+                                    {% render_field form.email class='form-control' hx-post="check_email/" hx-swap="outerhtml" hx-trigger="keyup changed" hx-target="#email-error" %}
                                  </div>
+                                 <div id="email-error"></div>
                               </li>
                               <li class="col-md-6">
                                  <label> Nom d'utilisateur : </label>
-                                 {% if form.username.errors %}
-                                 {% for error in form.username.errors %}
-                                 <div class="div-error-{{form.pwd.name}}"><small class="text-danger">{{error}}</small></div>
-                                  {% endfor %}
+                                 {% if error1 %}
+                                 <div class="div-error-{{error1}}"><small class="text-danger">{{error1}}</small></div>
                                   {% endif %}
                                  <div class="input-group">
-                                    {{form.username}}
+                                    {% render_field form.username class='form-control' hx-post="check_username/" hx-swap="outerhtml" hx-trigger="keyup changed" hx-target="#username-error" %}
                                  </div>
+                                 <div id="username-error"></div>
                               </li>
                               <li class="col-md-6">
                                  <label> Mot de passe : </label>
-                                 {% if form.pwd.errors %}
-                                 {% for error in form.pwd.errors %}
                                  <div class="div-error-{{form.pwd.name}}"><small class="text-danger">{{error}}</small></div>
-                                 {% endfor %}
-                                 {% endif %}
                                  <div class="input-group">
-                                    {{form.pwd}}
+                                    {% render_field form.pwd class='form-control' %}
                                  </div>
                               </li>
                               <li class="col-md-6">
                                  <label>Confirmation mot de passe : </label>
-                                 {% if form.pwd2.errors %}
-                                  {% for error in form.pwd2.errors %}
-                                 <div class="div-error-{{form.pwd.name}}"><small class="text-danger">{{error}}</small></div>
-                                  {% endfor %}
+                                 {% if errors %}
+                                 <div class="div-error-{{error}}"><small class="text-danger">{{error}}</small></div>
                                   {% endif %}
                                  <div class="input-group">
-                                    {{form.pwd2}}
+                                    {% render_field form.pwd2 class='form-control' %}
                                  </div>
                               </li>
                               <li class="col-md-12">
                                  <div class="input-group form-check">
-                                    <p>{{form.conditions}} <label class="form-check-label"> J’ai lu et j’accepte  <a href="#">les conditions générales d’utilisation </a></label> <strong>d'Agri-Mairie.</strong></p>
+                                    <p>{% render_field form.conditions %} <label class="form-check-label"> J’ai lu et j’accepte  <a href="#">les conditions générales d’utilisation </a></label> <strong>d'Agri-Mairie.</strong></p>
                                  </div>
                               </li>
                               <li class="col-md-12">

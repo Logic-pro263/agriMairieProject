@@ -1,0 +1,8 @@
+<div class="footer-widget">
+<h3>Articles de blog: </h3>
+<ul class="lastest-products">
+   {% for post in Rpost %}
+   <li> <img src="{{post.image.url}}" alt="{{post.title}}"> <strong><a href="{% url 'indexBlog' %}">{{post.title|truncatewords:8}}</a></strong> <span class="pdate"><i>Publier le:</i> {{post.created_on}}</span> </li>
+   {% endfor %}
+</ul>
+</div>

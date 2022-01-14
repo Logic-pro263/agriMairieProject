@@ -5,11 +5,24 @@ from PIL import Image
 # Create your models here
 User = get_user_model()
 
+
+class Authors(models.Model):
+    name = models.CharField(max_length=150, verbose_name='Nom')
+    about = models.TextField(max_length=1000, verbose_name='Description')
+    image = models.ImageField(default="auser.jpg", upload_to='auh_image', null=True, blank=True)
+
+    class Meta:
+        verbose_name = "Author"
+
+    def __str__(self):
+        return self.name
+
+
 class Post(models.Model):
+    author = models.ForeignKey(Authors, on_delete=models.SET_NULL, null=True, related_name='auteur')
     image = models.ImageField(upload_to="images")
     title = models.CharField(max_length=255, verbose_name="Titre")
     slug = models.SlugField(max_length=255)
-    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Auteur")
     last_updated = models.DateTimeField(auto_now=True)
     created_on = models.DateField(auto_now_add=True, auto_now=False, blank=True, null=True)
     published = models.BooleanField(default=False, verbose_name="Publié")
@@ -19,11 +32,8 @@ class Post(models.Model):
         ordering = ['-created_on']
         verbose_name = "Article"
 
-
-
     def __str__(self):
-        return f"{self.title} posté par {self.author.username}"
-
+        return f"{self.title} posté par {self.author}"
 
 
 class Comment(models.Model):

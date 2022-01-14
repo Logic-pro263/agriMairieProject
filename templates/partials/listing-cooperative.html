@@ -1,0 +1,39 @@
+<div class="row">
+        {% if list_cooperative %}
+        <div class="table-responsive" id="orderTable">
+            <table class="table table-striped" id="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Coopératives</th>
+      <th scope="col">Membre</th>
+      <th scope="col">Présidente</th>
+      <th scope="col">Date de Création</th>
+      <th scope="col">Localisation</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cooperative in list_cooperative %}
+    <tr id="cooperatives_list">
+      <th scope="row">{{ forloop.counter}}</th>
+      <td>{{cooperative.name|upper}}</td>
+      <td>{{cooperative.members_in}}</td>
+      <td>{{cooperative.name_president}}</td>
+      <td>{{cooperative.creation_date}}</td>
+      <td>{{cooperative.city}}</td>
+      <td>
+          <!-- Button active info coopérative -->
+          <a href="" class="text-warning me-2" title="Voir détails" id="voir_detail" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-info-circle"></i></a>
+          <a href="" class="text-primary me-2" title="Modifier"><i class="fas fa-edit"></i></a>
+          <a href="" class="text-danger me-2" hx-delete="{% url 'delete-cooperative' cooperative.id %}" hx-target="#cooperatives_list" hx-confirm="Êtes vous sûr de vouloir effacer cette cooperative ?"><i class="fas fa-trash-alt"></i></a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+    </div>
+    {% else %}
+  <p>Vous n'avez encore enregistré aucune coopérative </p>
+    {% endif %}
+    </div>

@@ -469,4 +469,5 @@ jQuery(document).ready(function($) {
 			});
 		}
 	});
+
 	// ------- Masonry End ------- //

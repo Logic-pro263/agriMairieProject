@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse
+from django.contrib.auth import authenticate, login, get_user_model
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import *
+
 
 # Create your views here.
 def login_mairie(request):
@@ -17,38 +19,68 @@ def login_mairie(request):
                 return redirect('index')
             else:
                 messages.error(request, "Nom d'utilisateur ou mot de passe incorrect")
-                return render(request, 'app_login/login.html', context={'form':form})
+                return render(request, 'app_login/login.html', context={'form': form})
         else:
             return render(request, 'app_login/login.html', context={'form': form})
     else:
         form = loginForm()
-        return render(request, 'app_login/login.html', context={'form':form})
+        return render(request, 'app_login/login.html', context={'form': form})
+
 
 def register_mairie(request):
-    if request.method == 'POST':
-        form = registerForm(request.POST)
-        if form.is_valid():
-            first_name = form.cleaned_data['first_name']
-            last_name = form.cleaned_data['last_name']
-            email = form.cleaned_data['email']
-            username = form.cleaned_data['username']
-            pwd = form.cleaned_data['pwd']
-            pwd2 = form.cleaned_data['pwd2']
-            if pwd == pwd2:
-                pass
-            else:
-                messages.error(request, "Mot de passe non identique")
-            conditions = form.cleaned_data['conditions']
-            user = User.objects.create_user(first_name=first_name, last_name=last_name, email=email, username=username, password=pwd)
-            if user is not None:
-                messages.success(request, f"Un compte a bien été créer pour {username} connectez-vous pour continuer")
-                return redirect('loginPage')
-            else:
-                messages.error(request, "Echec de la création de compte")
-                return render(request, 'app_login/register.html', context={'form':form})
+    firstname = ''
+    lastname = ''
+    emailvalue = ''
+    uservalue = ''
+    passwordvalue1 = ''
+    passwordvalue2 = ''
 
-    form = registerForm()
-    return render(request, 'app_login/register.html', context={'form': form})
+
+    form = registerForm(request.POST or None)
+
+    if form.is_valid():
+
+        firstname = form.cleaned_data.get('first_name')
+        lastname = form.cleaned_data.get('last_name')
+        emailvalue = form.cleaned_data.get('email')
+        uservalue = form.cleaned_data.get('username')
+        passwordvalue1 = form.cleaned_data.get('pwd')
+        passwordvalue2 = form.cleaned_data.get('pwd2')
+        if passwordvalue1 == passwordvalue2:
+            try:
+                user = User.objects.get(username=uservalue)
+                c_email = User.objects.get(email=emailvalue)
+                context = {'form': form, 'error1': "Choisir un autre nom d'utilisateur", 'error2': 'Choisir un autre adresse email'}
+                return render(request, 'app_login/register.html', context)
+            except User.DoesNotExist:
+                user = User.objects.create_user(username=uservalue, password=passwordvalue1, email=emailvalue)
+
+                fs = form.save()
+                context = {'form': form}
+                return render(request, 'app_login/login.html', context)
+        else:
+            context = {'form': form, 'error': 'Mot de passe non identique'}
+            return render(request, 'app_login/register.html', context)
+
+    else:
+        context = {'form': form}
+        return render(request, 'app_login/register.html', context)
+
+
+def check_email(request):
+    email = request.POST.get('email')
+    if get_user_model().objects.filter(email=email).exists():
+        return HttpResponse("<div id='email-error' class='error'>Adresse email non disponible </div>")
+    else:
+        return HttpResponse("<div id='email-error' class='success'>Adresse email  disponible </div>")
+
+
+def check_username(request):
+    username = request.POST.get('username')
+    if get_user_model().objects.filter(username=username).exists():
+        return HttpResponse("<div id='username-error' class='error'>Nom d'utilisateur non disponible</div>")
+    else:
+        return HttpResponse("<div id='username-error' class='success'>Nom d'utilisateur disponible</div>")
 
 
 def Profile(request):

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Cooeperatives, Members, Partenaire, CooperativeComment, MemberComment
+from .models import Cooeperatives, Members, Partenaire, CooperativeComment, MemberComment, Galeries
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.core.paginator import Paginator
@@ -11,7 +11,7 @@ from .forms import CooperativeCommentForm, MemberCommentForm
 
 
 def index(request):
-    posts = Post.objects.all()[:3] #Two recent post
+    posts = Post.objects.all()[:2] #Two recent post
     liste_partenaire = Partenaire.objects.all() # list of all partners
     c_comments = CooperativeComment.objects.all().order_by('-timestamp')[:3] # three testimonials of cooperatives
     m_comments = MemberComment.objects.all().order_by('-timestamp')[:2] # three testimonials of members
@@ -81,7 +81,8 @@ def detailWoman(request, id_member):
 
 @login_required()
 def gallery(request):
-    return render(request, 'mairie/gallery.html', context={})
+    images = Galeries.objects.all().order_by('-created_on')
+    return render(request, 'mairie/gallery.html', context={'image': images})
 
 @login_required()
 def about(request):

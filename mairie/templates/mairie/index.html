@@ -33,7 +33,7 @@
                <div class="slider-caption h3slider">
                   <div class="container">
                      <strong>AGRI-MAIRIE</strong>
-                     <h1>chaîne agricole renforcer</h1>
+                     <h1>chaîne agricole renforcée</h1>
                      <a href="{% url 'CooeperativePage' %}">Les Coopératives</a>
                   </div>
                </div>
@@ -73,7 +73,7 @@
                      <div class="volbox nob">
                         <img src="{% static 'mairie/images/moneyicon.png' %}" alt="">
                         <h5>Faire un don</h5>
-                        <p> Faites nous un don pour nous aider à atteindre nos objectifs visés pour ces femmes dans les zones rurale</p>
+                        <p> Faites nous un don pour nous aider à atteindre nos objectifs visés pour ces femmes dans les zones rurales</p>
                         <a href="{% url 'contactPage' %}">Nous supporter</a>
                      </div>
                   </div>
@@ -87,7 +87,7 @@
                <div class="row">
                   <div class="col-md-6">
                      <div class="h3-aboutxt">
-                        <h1>Nous aidons <span>les femmes rurales</span> a avoir confiance en elle</h1>
+                        <h1>Nous aidons <span>les femmes rurales</span> a avoir confiance en elles</h1>
                         <p> We are providing world-wide all kinds of eco frienly services, explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system.</p>
                         <p> Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat. </p>
                         <ul class="counter">
@@ -380,7 +380,7 @@
                         {% for c_comment in c_comments %}
                         <div class="item">
                            <p>{{c_comment.comment}} </p>
-                           <div class="tuser"> <img src="{{user.profile.profile_image.url}}" alt=""> <strong>{{c_comment.full_name}}</strong> </div>
+                           <div class="tuser"> <img src="{% static 'mairie/images/auser.jpg' %}" alt=""> <strong>{{c_comment.full_name}}</strong> </div>
                         </div>
                         {% endfor %}
                         <!--testimonials box End--> 

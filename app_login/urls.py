@@ -8,3 +8,11 @@ urlpatterns = [
     path('deconnexion', LogoutView.as_view(next_page='loginPage'), name='logoutPage'),
     path('profil', views.Profile, name='profilePage'),
 ]
+
+
+htmx_urlpatterns = [
+    path('check_email/', views.check_email, name='check-email'),
+    path('check_username/', views.check_username, name='check-username'),
+]
+
+urlpatterns += htmx_urlpatterns

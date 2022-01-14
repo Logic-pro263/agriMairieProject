@@ -14,77 +14,16 @@
             <div class="container">
                <div class="row">
                   <!--Image Box Start-->
+                  {% for image in images %}
                   <div class="col-md-4 col-sm-4">
                      <div class="gallery-img">
                         <a href="images/gallery/sgall1.jpg" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a>
-                        <img src="images/gallery/sgall1.jpg" alt="">
+                        <img src="{{image.image.url}}" alt="{{image.title}}">
                      </div>
+                     {% endfor %}
                   </div>
                   <!--Image Box End-->
-                  <!--Image Box Start-->
-                  <div class="col-md-4 col-sm-4">
-                     <div class="gallery-img">
-                        <a href="images/gallery/sgall2.jpg" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a>
-                        <img src="images/gallery/sgall2.jpg" alt="">
-                     </div>
-                  </div>
-                  <!--Image Box End--> 
-                  <!--Image Box Start-->
-                  <div class="col-md-4 col-sm-4">
-                     <div class="gallery-img">
-                        <a href="images/gallery/sgall3.jpg" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a>
-                        <img src="images/gallery/sgall3.jpg" alt="">
-                     </div>
-                  </div>
-                  <!--Image Box End-->
-                  <!--Image Box Start-->
-                  <div class="col-md-4 col-sm-4">
-                     <div class="gallery-img">
-                        <a href="images/gallery/sgall4.jpg" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a>
-                        <img src="images/gallery/sgall4.jpg" alt="">
-                     </div>
-                  </div>
-                  <!--Image Box End-->
-                  <!--Image Box Start-->
-                  <div class="col-md-4 col-sm-4">
-                     <div class="gallery-img">
-                        <a href="images/gallery/sgall5.jpg" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a>
-                        <img src="images/gallery/sgall5.jpg" alt="">
-                     </div>
-                  </div>
-                  <!--Image Box End--> 
-                  <!--Image Box Start-->
-                  <div class="col-md-4 col-sm-4">
-                     <div class="gallery-img">
-                        <a href="images/gallery/sgall6.jpg" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a>
-                        <img src="images/gallery/sgall6.jpg" alt="">
-                     </div>
-                  </div>
-                  <!--Image Box End--> 
-                  <!--Image Box Start-->
-                  <div class="col-md-4 col-sm-4">
-                     <div class="gallery-img">
-                        <a href="images/gallery/sgall7.jpg" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a>
-                        <img src="images/gallery/sgall7.jpg" alt="">
-                     </div>
-                  </div>
-                  <!--Image Box End-->
-                  <!--Image Box Start-->
-                  <div class="col-md-4 col-sm-4">
-                     <div class="gallery-img">
-                        <a href="images/gallery/sgall8.jpg" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a>
-                        <img src="images/gallery/sgall8.jpg" alt="">
-                     </div>
-                  </div>
-                  <!--Image Box End--> 
-                  <!--Image Box Start-->
-                  <div class="col-md-4 col-sm-4">
-                     <div class="gallery-img">
-                        <a href="images/gallery/sgall9.jpg" data-rel="prettyPhoto[gallery1]"><i class="fas fa-search"></i></a>
-                        <img src="images/gallery/sgall9.jpg" alt="">
-                     </div>
-                  </div>
-                  <!--Image Box End--> 
+
                </div>
                <div class="row">
                   <div class="col-md-12">

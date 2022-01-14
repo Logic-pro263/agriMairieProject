@@ -56,7 +56,8 @@
                      <div class="col-md-5 col-sm-12">
                         <ul class="header-contact">
                            <li><i class="fas fa-phone"></i> +223 44 44 44 44</li>
-                           <li><i class="fas fa-envelope"></i> agrimairie@gmail.com</li>
+                           <li><i class="fas fa-envelope"></i> <a style="color:#20b1aa;
+" href="mailto:agrimairie@gmail.com">agrimairie@gmail.com</a></li>
                         </ul>
                      </div>
                      <div class="col-md-5 col-sm-12">
@@ -148,12 +149,13 @@
                            <li><a href="{% url 'CooeperativePage' %}">Les cooéperative</a></li>
                            <li><a href="{% url 'womanPage' %}">Les femmes</a></li>
                         {% endif %}
+                           </ul>
                      </div>
                   </div>
                   <!--Footer Widget End-->
                   <!--Footer Widget Start-->
                   <div class="col-md-4 col-sm-6">
-                     h
+                     {% include 'partials/recent_article.html' %}
                   </div>
                   <!--Footer Widget End-->
                   <!--Footer Widget Start-->
@@ -197,7 +199,15 @@
       <script src="{% static 'mairie/js/jquery.prettyPhoto.js' %}"></script>
       <script src="{% static 'mairie/js/isotope.min.js' %}"></script>
       <script src="{% static 'mairie/js/custom.js' %}"></script>
-   </body>
 
+      <script>
+         document.body.addEventListener('htmx:configRequest', (event) =>  {
+            event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+         })
+      </script>
 
+      <!-- HTMX Ajax link -->
+  <script src="https://unpkg.com/htmx.org@1.6.1"></script>
+
+      </body>
 </html>

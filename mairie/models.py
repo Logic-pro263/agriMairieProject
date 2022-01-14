@@ -96,3 +96,13 @@ class MemberComment(models.Model):
 
     def __str__(self):
         return f"Commentaires sur {self.members.name} par {self.full_name}"
+
+
+class Galeries(models.Model):
+    image = models.ImageField(upload_to='galerie_images')
+    title = models.CharField(max_length=150)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return self.title

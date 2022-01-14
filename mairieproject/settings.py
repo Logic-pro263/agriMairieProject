@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'blog',
     'crispy_forms',
     'phonenumber_field',
+    'widget_tweaks',
     'addresses',
 ]
 
